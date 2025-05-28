@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Brain, Code, Zap, Target, Rocket, Star, Users, Award, ChevronDown } from "lucide-react";
@@ -24,30 +23,30 @@ const Index = () => {
       icon: Brain,
       title: "AI-Powered Learning",
       description: "Adaptive algorithms that personalize your interview prep based on your strengths and weaknesses.",
-      gradient: "from-violet-400 via-purple-400 to-indigo-500"
+      gradient: "from-violet-500 via-purple-500 to-fuchsia-500"
     },
     {
       icon: Code,
       title: "Real-World Problems",
       description: "Practice with actual interview questions from top tech companies like Google, Apple, and Meta.",
-      gradient: "from-pink-400 via-rose-400 to-red-500"
+      gradient: "from-pink-500 via-rose-500 to-orange-500"
     },
     {
       icon: Zap,
       title: "Instant Feedback",
       description: "Get immediate code analysis, optimization tips, and complexity evaluation for every solution.",
-      gradient: "from-emerald-400 via-teal-400 to-cyan-500"
+      gradient: "from-emerald-500 via-teal-500 to-cyan-500"
     },
     {
       icon: Target,
       title: "Mock Interviews",
       description: "Simulate real interview environments with video calls, whiteboarding, and time pressure.",
-      gradient: "from-blue-400 via-indigo-400 to-purple-500"
+      gradient: "from-blue-500 via-indigo-500 to-purple-600"
     }
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-rose-50 via-orange-50 to-amber-50">
       {/* Animated Background Orbs */}
       <div className="floating-orb w-96 h-96 top-20 -left-48 animate-float" style={{ animationDelay: '0s' }} />
       <div className="floating-orb w-64 h-64 top-96 -right-32 animate-float" style={{ animationDelay: '2s' }} />
@@ -64,7 +63,7 @@ const Index = () => {
       />
 
       {/* Navigation */}
-      <nav className="relative z-50 glass border-b border-white/30 bg-white/20">
+      <nav className="relative z-50 glass border-b border-white/30 bg-white/30">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
@@ -100,14 +99,14 @@ const Index = () => {
 
             <h1 className="text-6xl md:text-8xl font-black leading-tight mb-8">
               <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent">Master</span>{" "}
-              <span className="text-slate-800">Coding</span><br />
+              <span className="text-slate-800">Tech</span><br />
               <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">Interviews</span>{" "}
               <span className="text-slate-800">with AI</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Transform your interview preparation with AI-powered personalized learning, 
-              real-world problems, and instant feedback from industry experts.
+              Transform your interview preparation with AI-powered real-time conversations, 
+              personalized learning, and expert feedback from industry professionals.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
