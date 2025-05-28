@@ -46,13 +46,6 @@ const Index = () => {
     }
   ];
 
-  const stats = [
-    { number: "50K+", label: "Developers Hired" },
-    { number: "95%", label: "Success Rate" },
-    { number: "500+", label: "Top Companies" },
-    { number: "10K+", label: "Practice Problems" }
-  ];
-
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Animated Background Orbs */}
@@ -125,16 +118,6 @@ const Index = () => {
               <Button size="lg" variant="outline" className="glass-strong border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg">
                 Watch Demo
               </Button>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className={`text-center transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                  <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">{stat.number}</div>
-                  <div className="text-gray-400 text-sm">{stat.label}</div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
