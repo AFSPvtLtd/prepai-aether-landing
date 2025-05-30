@@ -101,32 +101,40 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50 relative overflow-hidden">
-      {/* Background Orbs */}
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Animated Background Orbs - same as landing page */}
       <div className="floating-orb w-96 h-96 top-20 -left-48 animate-float" style={{ animationDelay: '0s' }} />
       <div className="floating-orb w-64 h-64 top-96 -right-32 animate-float" style={{ animationDelay: '2s' }} />
+      <div className="floating-orb w-80 h-80 bottom-20 left-1/3 animate-float" style={{ animationDelay: '4s' }} />
       
       {/* Header */}
-      <div className="relative z-10 p-6 border-b border-white/20 backdrop-blur-sm">
+      <div className="relative z-10 p-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Welcome back, {currentUser?.displayName || currentUser?.email}
-            </h1>
-            <p className="text-slate-600 mt-1">Choose a technology to start your interview preparation</p>
+          <div className="text-2xl font-bold bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            InterviewAI
           </div>
           <Button 
             onClick={logout} 
             variant="outline" 
-            className="border-violet-200 text-violet-600 hover:bg-violet-50"
+            className="border-violet-200 text-violet-600 hover:bg-violet-50 hover:border-violet-300 transition-all duration-300 backdrop-blur-sm bg-white/30"
           >
             Sign Out
           </Button>
         </div>
       </div>
 
+      {/* Welcome Section - reduced height */}
+      <div className="relative z-10 px-6 pb-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl font-bold text-slate-800 mb-2">
+            Welcome back, {currentUser?.displayName || currentUser?.email}
+          </h1>
+          <p className="text-xl text-slate-600">Choose a technology to start your interview preparation</p>
+        </div>
+      </div>
+
       {/* Main Content */}
-      <div className="relative z-10 p-6">
+      <div className="relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
           <Tabs value={selectedTechnology} onValueChange={setSelectedTechnology} className="w-full">
             <TabsList className="grid w-full grid-cols-5 mb-8 bg-white/60 backdrop-blur-md border border-white/20 p-1">
@@ -147,37 +155,39 @@ const Dashboard = () => {
 
             {Object.entries(technologies).map(([key, tech]) => (
               <TabsContent key={key} value={key} className="space-y-6">
-                <div className={`text-center py-12 bg-gradient-to-r ${tech.gradient} rounded-3xl shadow-xl border border-white/20 backdrop-blur-sm`}>
-                  <tech.icon className="w-16 h-16 mx-auto mb-4 text-white drop-shadow-lg" />
-                  <h2 className="text-4xl font-bold text-white drop-shadow-lg mb-2">{tech.name}</h2>
+                {/* Technology Header - reduced height */}
+                <div className={`text-center py-8 bg-gradient-to-r ${tech.gradient} rounded-3xl shadow-xl border border-white/20 backdrop-blur-sm`}>
+                  <tech.icon className="w-12 h-12 mx-auto mb-3 text-white drop-shadow-lg" />
+                  <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-2">{tech.name}</h2>
                   <p className="text-white/90 text-lg">
                     {tech.frameworks.length} frameworks • {tech.frameworks.reduce((acc, f) => acc + f.questions, 0)} practice questions
                   </p>
                 </div>
 
+                {/* Framework Cards - increased height */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {tech.frameworks.map((framework, index) => (
                     <Card 
                       key={framework.name} 
-                      className="group hover:shadow-2xl transition-all duration-300 border-0 bg-white/70 backdrop-blur-sm hover:scale-105 cursor-pointer"
+                      className="group hover:shadow-2xl transition-all duration-300 border-0 bg-white/70 backdrop-blur-sm hover:scale-105 cursor-pointer min-h-[180px]"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
-                      <CardHeader className="pb-3">
-                        <div className="flex justify-between items-start">
-                          <CardTitle className="text-lg font-semibold text-slate-800 group-hover:text-violet-600 transition-colors">
+                      <CardHeader className="pb-4">
+                        <div className="flex justify-between items-start mb-2">
+                          <CardTitle className="text-xl font-semibold text-slate-800 group-hover:text-violet-600 transition-colors">
                             {framework.name}
                           </CardTitle>
                           <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-violet-500 group-hover:translate-x-1 transition-all" />
                         </div>
-                        <CardDescription className="text-slate-600">
+                        <CardDescription className="text-slate-600 text-base">
                           {framework.category}
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="space-y-3">
+                      <CardContent className="space-y-4 pt-2">
                         <div className="flex justify-between items-center">
                           <Badge 
                             variant="outline" 
-                            className={`${getDifficultyColor(framework.difficulty)} font-medium`}
+                            className={`${getDifficultyColor(framework.difficulty)} font-medium text-sm px-3 py-1`}
                           >
                             {framework.difficulty}
                           </Badge>
@@ -185,9 +195,9 @@ const Dashboard = () => {
                             {framework.questions} questions
                           </span>
                         </div>
-                        <div className="w-full bg-slate-100 rounded-full h-2">
+                        <div className="w-full bg-slate-100 rounded-full h-3">
                           <div 
-                            className={`h-2 rounded-full bg-gradient-to-r ${tech.gradient}`}
+                            className={`h-3 rounded-full bg-gradient-to-r ${tech.gradient} transition-all duration-500`}
                             style={{ width: `${Math.min((framework.questions / 200) * 100, 100)}%` }}
                           />
                         </div>
