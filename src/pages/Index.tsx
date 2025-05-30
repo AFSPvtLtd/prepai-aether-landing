@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Brain, Code, Zap, Target, Rocket, Star, Users, Award, ChevronDown } from "lucide-react";
@@ -77,7 +78,7 @@ const Index = () => {
       <nav className="relative z-10 p-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="text-2xl font-bold bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            InterviewAI
+            Prep.AI
           </div>
           <div className="space-x-4">
             <Button 
@@ -111,13 +112,13 @@ const Index = () => {
             }`}
           >
             <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-              Master Technical
+              Master Tech
               <span className="block bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Interviews with AI
               </span>
             </h1>
             <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Prepare for your dream tech job with AI-powered interview simulation. Get personalized feedback, practice with real questions, and build confidence.
+              Transform your interview preparation with AI-powered real-time conversations, personalized learning, and expert feedback from industry professionals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
@@ -125,7 +126,7 @@ const Index = () => {
                 size="lg" 
                 className="bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 hover:from-violet-600 hover:via-purple-600 hover:to-pink-600 text-white border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg"
               >
-                Start Practicing Today <ArrowRight className="ml-2 w-5 h-5" />
+                Start Your Journey <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button 
                 variant="outline" 

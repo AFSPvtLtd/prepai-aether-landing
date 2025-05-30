@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -111,7 +110,7 @@ const Dashboard = () => {
       <div className="relative z-10 p-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="text-2xl font-bold bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            InterviewAI
+            Prep.AI
           </div>
           <Button 
             onClick={logout} 
@@ -169,7 +168,7 @@ const Dashboard = () => {
                   {tech.frameworks.map((framework, index) => (
                     <Card 
                       key={framework.name} 
-                      className="group hover:shadow-2xl transition-all duration-300 border-0 bg-white/70 backdrop-blur-sm hover:scale-105 cursor-pointer min-h-[180px]"
+                      className="group hover:shadow-2xl transition-all duration-300 border-0 bg-white/70 backdrop-blur-sm hover:scale-105 cursor-pointer min-h-[200px]"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
                       <CardHeader className="pb-4">
