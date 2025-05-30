@@ -2,10 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Brain, Code, Zap, Target, Rocket, Star, Users, Award, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useAuthManager } from "@/components/auth/AuthManager";
+import UserProfile from "@/components/auth/UserProfile";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { openAuthModal } = useAuthManager();
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     setIsVisible(true);
@@ -77,12 +82,26 @@ const Index = () => {
               <a href="#features" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">Features</a>
               <a href="#pricing" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">Pricing</a>
               <a href="#about" className="text-slate-700 hover:text-violet-600 transition-colors font-medium">About</a>
-              <Button variant="outline" className="border-violet-200 text-violet-700 hover:bg-violet-50 bg-white/50">
-                Sign In
-              </Button>
-              <Button className="bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-                Get Started
-              </Button>
+              
+              {currentUser ? (
+                <UserProfile showName={true} />
+              ) : (
+                <>
+                  <Button 
+                    variant="outline" 
+                    className="border-violet-200 text-violet-700 hover:bg-violet-50 bg-white/50"
+                    onClick={openAuthModal}
+                  >
+                    Sign In
+                  </Button>
+                  <Button 
+                    className="bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={openAuthModal}
+                  >
+                    Get Started
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -110,8 +129,12 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-              <Button size="lg" className="bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 glow-box group">
-                Start Free Trial
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 glow-box group"
+                onClick={currentUser ? undefined : openAuthModal}
+              >
+                {currentUser ? "Start Your Journey" : "Start Free Trial"}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button size="lg" variant="outline" className="border-violet-200 text-violet-700 hover:bg-violet-50 bg-white/50 px-8 py-4 text-lg">
