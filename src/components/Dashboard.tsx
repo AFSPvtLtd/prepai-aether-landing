@@ -154,13 +154,17 @@ const Dashboard = () => {
 
             {Object.entries(technologies).map(([key, tech]) => (
               <TabsContent key={key} value={key} className="space-y-6">
-                {/* Technology Header - reduced height */}
-                <div className={`text-center py-8 bg-gradient-to-r ${tech.gradient} rounded-3xl shadow-xl border border-white/20 backdrop-blur-sm`}>
-                  <tech.icon className="w-12 h-12 mx-auto mb-3 text-white drop-shadow-lg" />
-                  <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-2">{tech.name}</h2>
-                  <p className="text-white/90 text-lg">
-                    {tech.frameworks.length} frameworks • {tech.frameworks.reduce((acc, f) => acc + f.questions, 0)} practice questions
-                  </p>
+                {/* Technology Header - horizontal layout with reduced height */}
+                <div className={`flex items-center justify-between py-6 px-8 bg-gradient-to-r ${tech.gradient} rounded-2xl shadow-xl border border-white/20 backdrop-blur-sm`}>
+                  <div className="flex items-center space-x-4">
+                    <tech.icon className="w-12 h-12 text-white drop-shadow-lg" />
+                    <div>
+                      <h2 className="text-3xl font-bold text-white drop-shadow-lg">{tech.name}</h2>
+                      <p className="text-white/90 text-lg">
+                        {tech.frameworks.length} frameworks • {tech.frameworks.reduce((acc, f) => acc + f.questions, 0)} practice questions
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Framework Cards - increased height */}
